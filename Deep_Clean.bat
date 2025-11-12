@@ -38,14 +38,12 @@ IF ERRORLEVEL 1 GOTO DISABLE_UPDATE   :: Y (Disable)
     echo.
     echo Starting Deep System Cleanup...
     
-    :: Cleaning Temp files
     DEL /F /S /Q "%TEMP%\*.*"
     DEL /F /S /Q "C:\Windows\Temp\*.*"
     DEL /F /S /Q "C:\Windows\Prefetch\*.*"
     DEL /F /S /Q "C:\Windows\Logs\*.*"
     RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
 
-    :: Renaming SoftwareDistribution (Removes old updates cache)
     echo [INFO] Purging old Windows Update cache...
     NET STOP wuauserv
     REN "C:\Windows\SoftwareDistribution" "C:\Windows\SoftwareDistribution.old"
@@ -59,4 +57,5 @@ IF ERRORLEVEL 1 GOTO DISABLE_UPDATE   :: Y (Disable)
     echo Cleanup complete. System rebooting in 10 seconds (Ctrl+C to abort).
     shutdown /r /t 10
     pause > nul
+
 
