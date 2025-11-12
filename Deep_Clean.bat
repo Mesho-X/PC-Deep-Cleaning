@@ -2,7 +2,6 @@
 Title Deep Cleaner & Update Control
 echo.
 
-:: --- 1. Windows Update Choice ---
 echo ======================================================
 echo == Choose Windows Update Service State              ==
 echo ======================================================
@@ -30,7 +29,6 @@ IF ERRORLEVEL 1 GOTO DISABLE_UPDATE   :: Y (Disable)
     echo [SUCCESS] Windows Update Service Enabled.
     GOTO CLEANUP_SWD
     
-:: --- 2. Core Cleaning Process ---
 :START_CLEANING
     echo.
     echo [INFO] Skipping Windows Update state change.
@@ -61,3 +59,4 @@ IF ERRORLEVEL 1 GOTO DISABLE_UPDATE   :: Y (Disable)
     echo Cleanup complete. System rebooting in 10 seconds (Ctrl+C to abort).
     shutdown /r /t 10
     pause > nul
+
